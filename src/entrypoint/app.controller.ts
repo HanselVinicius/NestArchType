@@ -1,6 +1,6 @@
 import { Controller, Get, Inject } from '@nestjs/common'
-import { User } from './core/entity/User'
-import { GetUserUseCase } from './core/usecase/GetUserUseCase'
+import { User } from 'src/core/entity/User'
+import { GetUserUseCase } from 'src/core/usecase/GetUserUseCase'
 
 @Controller()
 export class AppController {

@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common'
-import { AppController } from 'src/app.controller'
 import { GetUserUseCase } from 'src/core/usecase/GetUserUseCase'
+import { UserRepository } from 'src/dataprovider/entity/UserRepository'
 import { GetUserGatewayImpl } from 'src/dataprovider/GetUserGatewayImpl'
+import { AppController } from 'src/entrypoint/app.controller'
 
 @Module({
   imports: [],
@@ -9,7 +10,7 @@ import { GetUserGatewayImpl } from 'src/dataprovider/GetUserGatewayImpl'
   providers: [
     {
       provide: 'GetUserGateway',
-      useFactory: () => new GetUserGatewayImpl(),
+      useFactory: () => new GetUserGatewayImpl(new UserRepository()),
     },
     {
       provide: GetUserUseCase.GetUserUseCase,
